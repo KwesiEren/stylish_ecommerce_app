@@ -18,5 +18,5 @@ const kheading2 = TextStyle(
 const kheading3 = TextStyle(
     fontSize: 15,
     fontFamily: 'Overpass',
-    fontWeight: FontWeight.w400,
-    color: text_color2);
+    fontWeight: FontWeight.w200,
+    color: text_color1);
