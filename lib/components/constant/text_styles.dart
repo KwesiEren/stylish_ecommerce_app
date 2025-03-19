@@ -9,6 +9,12 @@ const kheading1 = TextStyle(
     fontWeight: FontWeight.bold,
     color: text_color3);
 
+const ktitle = TextStyle(
+    fontSize: 30,
+    fontFamily: 'Monserrat',
+    fontWeight: FontWeight.bold,
+    color: text_color1);
+
 const kheading2 = TextStyle(
     fontSize: 20,
     fontFamily: 'Monserrat',
@@ -19,4 +25,4 @@ const kheading3 = TextStyle(
     fontSize: 15,
     fontFamily: 'Overpass',
     fontWeight: FontWeight.w200,
-    color: text_color1);
+    color: text_color2);

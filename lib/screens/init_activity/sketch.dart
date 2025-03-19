@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
+import 'package:stylish_ecommerce_app/components/widgets/caption_placeholder1.dart';
 import 'package:stylish_ecommerce_app/components/widgets/card1.dart';
 
 class Sketch extends StatefulWidget {
@@ -40,9 +41,10 @@ class _SketchState extends State<Sketch> {
         title: Text('Sketch Screen'),
         backgroundColor: main_color,
       ),
-      body: SizedBox(
+      body: SingleChildScrollView(
         child: Column(
           children: [
+            // Product List
             Container(
               width: 400,
               height: 400,
@@ -65,6 +67,13 @@ class _SketchState extends State<Sketch> {
                   );
                 },
               ),
+            ),
+
+            // Image and Text Placeholder,
+            CaptionPlaceholder1(
+              heading1: 'Data Sample',
+              heading2:
+                  'Data sampled from the depth of his bussom is not hard to dissercn but there is caution to the wind.',
             ),
           ],
         ),
