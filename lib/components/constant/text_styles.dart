@@ -26,3 +26,9 @@ const kheading3 = TextStyle(
     fontFamily: 'Overpass',
     fontWeight: FontWeight.w200,
     color: text_color2);
+
+const kbutton1 = TextStyle(
+    fontSize: 20,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.bold,
+    color: text_color4);

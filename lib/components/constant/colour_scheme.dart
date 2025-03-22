@@ -14,3 +14,4 @@ const buton_color2 = Color.fromRGBO(248, 55, 88, 1);
 const text_color1 = Color.fromRGBO(0, 0, 0, 1);
 const text_color2 = Color.fromRGBO(158, 158, 158, 1);
 const text_color3 = Color.fromRGBO(248, 55, 88, 1);
+const text_color4 = Color.fromRGBO(255, 255, 255, 1);

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
+import 'package:stylish_ecommerce_app/components/constant/text_styles.dart';
 import 'package:stylish_ecommerce_app/components/widgets/caption_placeholder1.dart';
 import 'package:stylish_ecommerce_app/components/widgets/card1.dart';
+import 'package:stylish_ecommerce_app/components/widgets/hard_button1.dart';
+import 'package:stylish_ecommerce_app/components/widgets/hyperlint_text.dart';
+import 'package:stylish_ecommerce_app/screens/init_activity/onboarding_screen.dart';
 
 class Sketch extends StatefulWidget {
   const Sketch({super.key});
@@ -74,6 +78,25 @@ class _SketchState extends State<Sketch> {
               heading1: 'Data Sample',
               heading2:
                   'Data sampled from the depth of his bussom is not hard to dissercn but there is caution to the wind.',
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            LinkText1(
+              text: 'Click Here',
+              thickness: FontWeight.w300,
+              target: OnboardingScreen(),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+
+            HardButton1(
+              text: 'Button',
+              onPressed: () {},
+            ),
+            SizedBox(
+              height: 20,
             ),
           ],
         ),
