@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
 import 'package:stylish_ecommerce_app/components/widgets/caption_placeholder1.dart';
 import 'package:stylish_ecommerce_app/components/widgets/card1.dart';
+import 'package:stylish_ecommerce_app/components/widgets/circlecard_widget.dart';
 import 'package:stylish_ecommerce_app/components/widgets/hard_button1.dart';
 import 'package:stylish_ecommerce_app/components/widgets/hyperlint_text.dart';
+import 'package:stylish_ecommerce_app/components/widgets/inputfield&icon_widget.dart';
 import 'package:stylish_ecommerce_app/components/widgets/size_variation_widget/size_section.dart';
 import 'package:stylish_ecommerce_app/screens/init_activity/onboarding_screen.dart';
 
@@ -15,6 +17,7 @@ class Sketch extends StatefulWidget {
 }
 
 class _SketchState extends State<Sketch> {
+  bool _hidePassword = true;
   final List<Map<String, dynamic>> products = [
     {
       "name": "Shoes",
@@ -108,6 +111,46 @@ class _SketchState extends State<Sketch> {
             SizeSection(
               items: products,
               section: 'name',
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(30),
+              child: Column(
+                children: [
+                  InputField1(
+                    icon: Icons.person,
+                    hint: 'Email',
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  InputField1(
+                    icon: Icons.lock,
+                    hint: 'Password',
+                    hideText: _hidePassword,
+                    suffixIcon: Icons.visibility,
+                    callback: () {
+                      setState(() {
+                        _hidePassword = !_hidePassword;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 10,
+              children: [
+                CirclecardWidget(),
+                CirclecardWidget(),
+                CirclecardWidget(),
+              ],
             ),
             SizedBox(
               height: 20,
