@@ -32,3 +32,15 @@ const kbutton1 = TextStyle(
     fontFamily: 'Overpass',
     fontWeight: FontWeight.bold,
     color: text_color4);
+
+const kbutton2 = TextStyle(
+    fontSize: 15,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.bold,
+    color: text_color4);
+
+const kbutton3 = TextStyle(
+    fontSize: 15,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.bold,
+    color: text_color3);

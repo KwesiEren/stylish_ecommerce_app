@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
-import 'package:stylish_ecommerce_app/components/constant/text_styles.dart';
 import 'package:stylish_ecommerce_app/components/widgets/caption_placeholder1.dart';
 import 'package:stylish_ecommerce_app/components/widgets/card1.dart';
 import 'package:stylish_ecommerce_app/components/widgets/hard_button1.dart';
 import 'package:stylish_ecommerce_app/components/widgets/hyperlint_text.dart';
+import 'package:stylish_ecommerce_app/components/widgets/size_variation_widget/size_section.dart';
 import 'package:stylish_ecommerce_app/screens/init_activity/onboarding_screen.dart';
 
 class Sketch extends StatefulWidget {
@@ -94,6 +94,20 @@ class _SketchState extends State<Sketch> {
             HardButton1(
               text: 'Button',
               onPressed: () {},
+            ),
+            SizedBox(
+              height: 20,
+            ),
+
+            // SizeButton(
+            //   text: '6 UK',
+            // ),
+            SizedBox(
+              height: 20,
+            ),
+            SizeSection(
+              items: products,
+              section: 'name',
             ),
             SizedBox(
               height: 20,
