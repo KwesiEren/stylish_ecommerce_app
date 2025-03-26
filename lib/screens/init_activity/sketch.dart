@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
+import 'package:stylish_ecommerce_app/components/widgets/advert_widgets/ad_widget1.dart';
+import 'package:stylish_ecommerce_app/components/widgets/advert_widgets/ad_widget3.dart';
 import 'package:stylish_ecommerce_app/components/widgets/caption_placeholder1.dart';
 import 'package:stylish_ecommerce_app/components/widgets/card1.dart';
 import 'package:stylish_ecommerce_app/components/widgets/circlecard_widget.dart';
@@ -8,6 +10,8 @@ import 'package:stylish_ecommerce_app/components/widgets/hyperlint_text.dart';
 import 'package:stylish_ecommerce_app/components/widgets/inputfield&icon_widget.dart';
 import 'package:stylish_ecommerce_app/components/widgets/size_variation_widget/size_section.dart';
 import 'package:stylish_ecommerce_app/screens/init_activity/onboarding_screen.dart';
+
+import '../../components/widgets/advert_widgets/ad_widget2.dart';
 
 class Sketch extends StatefulWidget {
   const Sketch({super.key});
@@ -151,6 +155,40 @@ class _SketchState extends State<Sketch> {
                 CirclecardWidget(),
                 CirclecardWidget(),
               ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            AdWidget1(
+              onPressed: () {},
+              button_text: 'Shop Now',
+              icon: Icons.arrow_forward,
+              text1: '50% - 40% OFF',
+              text2: 'New products in stock\nAll colors available',
+              bg_img:
+                  'https://get.wallhere.com/photo/women-model-portrait-dress-blue-pattern-fashion-spring-clothing-design-snapshot-textile-photo-shoot-abdomen-114810.jpg',
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            AdWidget2(
+              onPressed: () {},
+              button_text: 'View all',
+              icon: Icons.arrow_forward,
+              text1: 'Deal of the Day',
+              text_icon: Icons.alarm,
+              text2: 'Wanna See',
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            AdWidget3(
+              onPressed: () {},
+              button_text: 'View all',
+              icon: Icons.arrow_forward,
+              text1: 'New Arrivals',
+              text_icon: Icons.alarm,
+              text2: 'Summer\'25 Collections',
             ),
             SizedBox(
               height: 20,

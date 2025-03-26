@@ -44,3 +44,27 @@ const kbutton3 = TextStyle(
     fontFamily: 'Overpass',
     fontWeight: FontWeight.bold,
     color: text_color3);
+
+const ktext1 = TextStyle(
+    fontSize: 15,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.normal,
+    color: text_color4);
+
+const ktext2 = TextStyle(
+    fontSize: 20,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.w500,
+    color: text_color4);
+
+const ktext3 = TextStyle(
+    fontSize: 15,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.w200,
+    color: text_color4);
+
+const ktext4 = TextStyle(
+    fontSize: 15,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.w200,
+    color: text_color1);
