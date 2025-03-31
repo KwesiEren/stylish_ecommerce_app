@@ -31,13 +31,18 @@ class AdWidget4 extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(
+          Container(
             width: 145,
-            height: 245,
-            child: Image.network(
-              bg_img,
-              fit: BoxFit.contain,
-            ),
+            height: 250,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                ),
+                image: DecorationImage(
+                  image: NetworkImage(bg_img),
+                  fit: BoxFit.cover,
+                )),
           ),
           SizedBox(
             width: 180,
