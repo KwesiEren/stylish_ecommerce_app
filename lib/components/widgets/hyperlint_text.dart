@@ -5,12 +5,14 @@ import '../constant/colour_scheme.dart';
 class LinkText1 extends StatelessWidget {
   final String text;
   final Widget target;
+  final Color? color;
   final FontWeight thickness;
   final double? size;
 
   const LinkText1(
       {super.key,
       required this.text,
+      this.color,
       required this.thickness,
       required this.target,
       this.size});
@@ -31,7 +33,7 @@ class LinkText1 extends StatelessWidget {
             fontFamily: 'Monserrat',
             fontSize: size ?? 17,
             fontWeight: thickness,
-            color: buton_color2),
+            color: color ?? buton_color2),
       ),
     );
   }

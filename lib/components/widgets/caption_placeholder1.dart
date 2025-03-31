@@ -23,8 +23,8 @@ class CaptionPlaceholder1 extends StatelessWidget {
           decoration: BoxDecoration(
             image: imageURL.isNotEmpty
                 ? DecorationImage(
-                    image: NetworkImage(imageURL),
-                    fit: BoxFit.cover,
+                    image: AssetImage(imageURL),
+                    fit: BoxFit.contain,
                   )
                 : null,
           ),
@@ -41,10 +41,13 @@ class CaptionPlaceholder1 extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Text(
-              heading2,
-              style: kheading3,
-              textAlign: TextAlign.center,
+            Padding(
+              padding: const EdgeInsets.all(3.0),
+              child: Text(
+                heading2,
+                style: kheading3,
+                textAlign: TextAlign.center,
+              ),
             ),
           ],
         ),

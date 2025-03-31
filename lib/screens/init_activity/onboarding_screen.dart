@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
 import 'package:stylish_ecommerce_app/components/constant/text_styles.dart';
+import 'package:stylish_ecommerce_app/components/widgets/caption_placeholder1.dart';
+import 'package:stylish_ecommerce_app/screens/init_activity/sketch.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -10,84 +13,135 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  final PageController _pageController = PageController();
+  int _currentPage = 0; // Track current page
+
+  void _nextPage() {
+    if (_currentPage < 2) {
+      _pageController.nextPage(
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Sketch()),
+      );
+    }
+  }
+
+  void _prevPage() {
+    if (_currentPage > 0) {
+      _pageController.previousPage(
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Onboarding Page 1'),
-        backgroundColor: Colors.blue,
-      ),
-      body: Center(
+      backgroundColor: base_color,
+      body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'data',
-              style: kheading1,
-            ),
-            Text(
-              'data',
-              style: kheading2,
-            ),
-            Text(
-              'data',
-              style: kheading3,
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '${_currentPage + 1}/3',
+                    style: ktext4,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      _pageController.jumpToPage(2); // Skip to last page
+                    },
+                    child: Text(
+                      'Skip',
+                      style: ktext4.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
-                width: 300,
-                child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 100,
-                          height: 100,
-                          color: base_color,
-                          child: Text('base'),
-                        ),
-                        Container(
-                          width: 100,
-                          height: 100,
-                          color: main_color,
-                          child: Text('base'),
-                        ),
-                        Container(
-                          width: 100,
-                          height: 100,
-                          color: card_color,
-                          child: Text('base'),
-                        ),
-                        Container(
-                          width: 100,
-                          height: 100,
-                          color: text_color1,
-                          child: Text('base'),
-                        ),
-                        Container(
-                          width: 100,
-                          height: 100,
-                          color: text_color2,
-                          child: Text('base'),
-                        ),
-                        Container(
-                          width: 100,
-                          height: 100,
-                          color: text_color3,
-                          child: Text('base'),
-                        ),
-                        Container(
-                          width: 100,
-                          height: 100,
-                          color: buton_color1,
-                          child: Text('base'),
-                        ),
-                        Container(
-                          width: 100,
-                          height: 100,
-                          color: buton_color2,
-                          child: Text('base'),
-                        )
-                      ],
-                    )))
+              height: 50,
+            ),
+
+            // PageView for onboarding screens
+            Expanded(
+              child: PageView(
+                controller: _pageController,
+                onPageChanged: (index) {
+                  setState(() {
+                    _currentPage = index; // Update current page
+                  });
+                },
+                children: [
+                  CaptionPlaceholder1(
+                    imageURL: 'assets/images/onb_1.png',
+                    heading1: 'Choose Products',
+                    heading2:
+                        'Easily select from a wide range of quality products at the best prices.',
+                  ),
+                  CaptionPlaceholder1(
+                    imageURL: 'assets/images/onb_2.png',
+                    heading1: 'Add to Cart',
+                    heading2:
+                        'Simply add your favorite products to the cart for an easy checkout experience.',
+                  ),
+                  CaptionPlaceholder1(
+                    imageURL: 'assets/images/onb_3.png',
+                    heading1: 'Fast Delivery',
+                    heading2:
+                        'Get your products delivered quickly and securely to your doorstep.',
+                  ),
+                ],
+              ),
+            ),
+
+            // Navigation Controls
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    onTap: _prevPage,
+                    child: Text(
+                      'Prev',
+                      style: _currentPage > 0
+                          ? ktext4
+                          : ktext4.copyWith(color: Colors.grey),
+                    ),
+                  ),
+                  SmoothPageIndicator(
+                    controller: _pageController,
+                    count: 3, // Number of pages
+                    effect: ExpandingDotsEffect(
+                      activeDotColor: Colors.black,
+                      dotColor: Colors.grey,
+                      dotHeight: 10,
+                      dotWidth: 10,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: _nextPage,
+                    child: Text(
+                      _currentPage < 2 ? 'Next' : 'Get Started',
+                      style: kbutton3.copyWith(fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
