@@ -11,8 +11,9 @@ import 'package:stylish_ecommerce_app/components/widgets/inputfield&icon_widget.
 import 'package:stylish_ecommerce_app/components/widgets/size_variation_widget/size_section.dart';
 import 'package:stylish_ecommerce_app/screens/init_activity/onboarding_screen.dart';
 
-import '../../components/widgets/advert_widgets/ad_widget2.dart';
-import '../../components/widgets/advert_widgets/ad_widget4.dart';
+import '../components/widgets/advert_widgets/ad_widget2.dart';
+import '../components/widgets/advert_widgets/ad_widget4.dart';
+import '../components/widgets/appbar_widget/appbar_widget.dart';
 
 class Sketch extends StatefulWidget {
   const Sketch({super.key});
@@ -22,6 +23,8 @@ class Sketch extends StatefulWidget {
 }
 
 class _SketchState extends State<Sketch> {
+  TextEditingController _searchController = TextEditingController();
+  String _searchQuery = '';
   bool _hidePassword = true;
   final List<Map<String, dynamic>> products = [
     {
@@ -48,6 +51,7 @@ class _SketchState extends State<Sketch> {
 
   @override
   Widget build(BuildContext context) {
+    final screen = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text('Sketch Screen'),
@@ -201,6 +205,23 @@ class _SketchState extends State<Sketch> {
               text2: 'New products in stock\nAll colors available',
               bg_img:
                   'https://get.wallhere.com/photo/women-model-portrait-dress-blue-pattern-fashion-spring-clothing-design-snapshot-textile-photo-shoot-abdomen-114810.jpg',
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            CustomAppBar(
+              searchController: _searchController,
+              onSearchChanged: (query) {
+                setState(() {
+                  _searchQuery = query;
+                });
+              },
+              onMapPressed: () {
+                print("Map button pressed");
+              },
+              onProfilePressed: () {
+                print("Profile button pressed");
+              },
             ),
             SizedBox(
               height: 20,

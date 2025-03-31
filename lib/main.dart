@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stylish_ecommerce_app/screens/init_activity/sketch.dart';
+import 'package:stylish_ecommerce_app/screens/sketch.dart';
 
 void main() {
   runApp(const MyApp());
