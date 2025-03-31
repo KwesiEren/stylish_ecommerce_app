@@ -9,6 +9,12 @@ const kheading1 = TextStyle(
     fontWeight: FontWeight.bold,
     color: text_color3);
 
+const ktitle = TextStyle(
+    fontSize: 30,
+    fontFamily: 'Monserrat',
+    fontWeight: FontWeight.bold,
+    color: text_color1);
+
 const kheading2 = TextStyle(
     fontSize: 20,
     fontFamily: 'Monserrat',
@@ -18,5 +24,47 @@ const kheading2 = TextStyle(
 const kheading3 = TextStyle(
     fontSize: 15,
     fontFamily: 'Overpass',
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w200,
     color: text_color2);
+
+const kbutton1 = TextStyle(
+    fontSize: 20,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.bold,
+    color: text_color4);
+
+const kbutton2 = TextStyle(
+    fontSize: 15,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.bold,
+    color: text_color4);
+
+const kbutton3 = TextStyle(
+    fontSize: 15,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.bold,
+    color: text_color3);
+
+const ktext1 = TextStyle(
+    fontSize: 15,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.normal,
+    color: text_color4);
+
+const ktext2 = TextStyle(
+    fontSize: 20,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.w500,
+    color: text_color4);
+
+const ktext3 = TextStyle(
+    fontSize: 15,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.w200,
+    color: text_color4);
+
+const ktext4 = TextStyle(
+    fontSize: 15,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.w200,
+    color: text_color1);

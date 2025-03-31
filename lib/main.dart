@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'screens/init_activity/onboarding_screen.dart';
+import 'package:stylish_ecommerce_app/screens/init_activity/sketch.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OnboardingScreen(),
+      home: Sketch(),
     );
   }
 }
