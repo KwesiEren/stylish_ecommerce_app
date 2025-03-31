@@ -12,6 +12,7 @@ import 'package:stylish_ecommerce_app/components/widgets/size_variation_widget/s
 import 'package:stylish_ecommerce_app/screens/init_activity/onboarding_screen.dart';
 
 import '../../components/widgets/advert_widgets/ad_widget2.dart';
+import '../../components/widgets/advert_widgets/ad_widget4.dart';
 
 class Sketch extends StatefulWidget {
   const Sketch({super.key});
@@ -187,8 +188,19 @@ class _SketchState extends State<Sketch> {
               button_text: 'View all',
               icon: Icons.arrow_forward,
               text1: 'New Arrivals',
-              text_icon: Icons.alarm,
               text2: 'Summer\'25 Collections',
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            AdWidget4(
+              onPressed: () {},
+              button_text: 'View Now',
+              icon: Icons.arrow_forward,
+              text1: '50% - 40% OFF',
+              text2: 'New products in stock\nAll colors available',
+              bg_img:
+                  'https://get.wallhere.com/photo/women-model-portrait-dress-blue-pattern-fashion-spring-clothing-design-snapshot-textile-photo-shoot-abdomen-114810.jpg',
             ),
             SizedBox(
               height: 20,

@@ -9,7 +9,7 @@ class AdWidget3 extends StatelessWidget {
   final String text1;
   final String text2;
   final String imageUrl; // Optional: You can use an image URL
-  final IconData text_icon;
+
   final IconData icon;
   final VoidCallback onPressed;
   AdWidget3(
@@ -18,7 +18,6 @@ class AdWidget3 extends StatelessWidget {
       required this.text2,
       required this.icon,
       this.imageUrl = '',
-      required this.text_icon,
       required this.onPressed,
       required this.button_text});
 
