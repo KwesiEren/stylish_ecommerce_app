@@ -3,7 +3,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
 import 'package:stylish_ecommerce_app/components/constant/text_styles.dart';
 import 'package:stylish_ecommerce_app/components/widgets/caption_placeholder1.dart';
-import 'package:stylish_ecommerce_app/screens/sketch.dart';
+import 'package:stylish_ecommerce_app/screens/init_activity/login_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -25,7 +25,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Sketch()),
+        MaterialPageRoute(builder: (context) => LoginScreen()),
       );
     }
   }

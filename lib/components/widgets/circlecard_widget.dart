@@ -24,7 +24,7 @@ class _CirclecardWidgetState extends State<CirclecardWidget> {
           border: Border.all(color: buton_color2, width: 1),
           image: widget.imageUrl.isNotEmpty
               ? DecorationImage(
-                  image: NetworkImage(widget.imageUrl),
+                  image: AssetImage(widget.imageUrl),
                   fit: BoxFit.cover,
                 )
               : null,

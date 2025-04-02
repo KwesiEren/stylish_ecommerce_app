@@ -216,12 +216,7 @@ class _SketchState extends State<Sketch> {
                   _searchQuery = query;
                 });
               },
-              onMapPressed: () {
-                print("Map button pressed");
-              },
-              onProfilePressed: () {
-                print("Profile button pressed");
-              },
+              onMapPressed: () {},
             ),
             SizedBox(
               height: 20,

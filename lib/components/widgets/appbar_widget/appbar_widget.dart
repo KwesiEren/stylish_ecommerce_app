@@ -8,14 +8,12 @@ class CustomAppBar extends StatelessWidget {
   final Function(String) onSearchChanged;
   final Color backgroundColor;
   final VoidCallback onMapPressed;
-  final VoidCallback onProfilePressed;
 
   const CustomAppBar({
     Key? key,
     required this.searchController,
     required this.onSearchChanged,
     required this.onMapPressed,
-    required this.onProfilePressed,
     this.backgroundColor = Colors.transparent,
   }) : super(key: key);
 
