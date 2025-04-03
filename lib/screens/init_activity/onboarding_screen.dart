@@ -62,10 +62,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     },
                     child: Text(
                       'Skip',
-                      style: ktext4.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                      ),
+                      style: _currentPage < 2
+                          ? ktext4
+                          : ktext4.copyWith(
+                              color: Colors.grey, fontWeight: FontWeight.w600),
                     ),
                   ),
                 ],
