@@ -22,16 +22,16 @@ class _CirclecardWidgetState extends State<CirclecardWidget> {
           shape: BoxShape.circle,
           color: const Color.fromARGB(19, 255, 129, 152),
           border: Border.all(color: buton_color2, width: 1),
-          image: widget.imageUrl.isNotEmpty
-              ? DecorationImage(
-                  image: AssetImage(widget.imageUrl),
-                  fit: BoxFit.cover,
-                )
-              : null,
         ),
         child: widget.imageUrl.isEmpty
             ? const Icon(Icons.image, color: Colors.grey)
-            : null,
+            : Padding(
+                padding: const EdgeInsets.all(8),
+                child: Image.asset(
+                  widget.imageUrl,
+                  fit: BoxFit.contain,
+                ),
+              ),
       ),
     );
   }

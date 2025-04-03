@@ -10,7 +10,7 @@ const kheading1 = TextStyle(
     color: text_color3);
 
 const ktitle = TextStyle(
-    fontSize: 30,
+    fontSize: 40,
     fontFamily: 'Monserrat',
     fontWeight: FontWeight.bold,
     color: text_color1);
