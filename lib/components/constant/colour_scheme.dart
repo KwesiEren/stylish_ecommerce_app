@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 const base_color = Color.fromRGBO(255, 255, 255, 1);
 const main_color = Color.fromRGBO(248, 55, 88, 1);
 const card_color = Color.fromRGBO(255, 204, 213, 1);
+const card_color2 = Color.fromRGBO(254, 254, 254, 0.949);
 
 // Button colors
 const buton_color1 = Color.fromRGBO(250, 113, 137, 1);

@@ -3,9 +3,10 @@ import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
 
 import 'searchbar_widget.dart';
 
-class CustomAppBar extends StatelessWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final TextEditingController searchController;
   final Function(String) onSearchChanged;
+  final double height;
   final Color backgroundColor;
   final VoidCallback onMapPressed;
 
@@ -13,6 +14,7 @@ class CustomAppBar extends StatelessWidget {
     Key? key,
     required this.searchController,
     required this.onSearchChanged,
+    required this.height,
     required this.onMapPressed,
     this.backgroundColor = Colors.transparent,
   }) : super(key: key);
@@ -28,6 +30,7 @@ class CustomAppBar extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
+            const SizedBox(height: 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -82,4 +85,7 @@ class CustomAppBar extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  Size get preferredSize => Size.fromHeight(height);
 }

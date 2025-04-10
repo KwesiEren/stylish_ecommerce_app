@@ -99,11 +99,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CirclecardWidget(imageUrl: 'assets/images/google.png'),
+                        CirclecardWidget(
+                          imageUrl: 'assets/images/google.png',
+                          onPressed: () {},
+                        ),
                         SizedBox(width: width * 0.05),
-                        CirclecardWidget(imageUrl: 'assets/images/apple.png'),
+                        CirclecardWidget(
+                            onPressed: () {},
+                            imageUrl: 'assets/images/apple.png'),
                         SizedBox(width: width * 0.05),
-                        CirclecardWidget(imageUrl: 'assets/images/fb.png'),
+                        CirclecardWidget(
+                            onPressed: () {}, imageUrl: 'assets/images/fb.png'),
                       ],
                     ),
 

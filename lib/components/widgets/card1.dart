@@ -26,7 +26,7 @@ class ProductCard extends StatelessWidget {
       width: 150,
       height: 250,
       decoration: BoxDecoration(
-        color: main_color,
+        color: card_color2,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           const BoxShadow(

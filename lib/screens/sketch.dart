@@ -5,6 +5,7 @@ import 'package:stylish_ecommerce_app/components/widgets/advert_widgets/ad_widge
 import 'package:stylish_ecommerce_app/components/widgets/caption_placeholder1.dart';
 import 'package:stylish_ecommerce_app/components/widgets/card1.dart';
 import 'package:stylish_ecommerce_app/components/widgets/circlecard_widget.dart';
+import 'package:stylish_ecommerce_app/components/widgets/featured_product_widget/featured_section.dart';
 import 'package:stylish_ecommerce_app/components/widgets/hard_button1.dart';
 import 'package:stylish_ecommerce_app/components/widgets/hyperlint_text.dart';
 import 'package:stylish_ecommerce_app/components/widgets/inputfield&icon_widget.dart';
@@ -29,24 +30,39 @@ class _SketchState extends State<Sketch> {
   final List<Map<String, dynamic>> products = [
     {
       "name": "Shoes",
+      "image": "assets/images/onb_1.png",
       "details": "Running Shoes",
       "price": 49.99,
       "rating": 4.5
     },
-    {"name": "Watch", "details": "Smart Watch", "price": 99.99, "rating": 4.2},
+    {
+      "name": "Watch",
+      "image": "assets/images/onb_1.png",
+      "details": "Smart Watch",
+      "price": 99.99,
+      "rating": 4.2
+    },
     {
       "name": "Phone",
+      "image": "assets/images/onb_1.png",
       "details": "Android Phone",
       "price": 699.99,
       "rating": 4.8
     },
     {
       "name": "Shoes",
+      "image": "assets/images/onb_1.png",
       "details": "Running Shoes",
       "price": 49.99,
       "rating": 4.5
     },
-    {"name": "Watch", "details": "Smart Watch", "price": 99.99, "rating": 4.2},
+    {
+      "name": "Watch",
+      "image": "assets/images/onb_1.png",
+      "details": "Smart Watch",
+      "price": 99.99,
+      "rating": 4.2
+    },
   ];
 
   @override
@@ -156,9 +172,15 @@ class _SketchState extends State<Sketch> {
               mainAxisAlignment: MainAxisAlignment.center,
               spacing: 10,
               children: [
-                CirclecardWidget(),
-                CirclecardWidget(),
-                CirclecardWidget(),
+                CirclecardWidget(
+                  onPressed: () {},
+                ),
+                CirclecardWidget(
+                  onPressed: () {},
+                ),
+                CirclecardWidget(
+                  onPressed: () {},
+                ),
               ],
             ),
             SizedBox(
@@ -210,6 +232,7 @@ class _SketchState extends State<Sketch> {
               height: 20,
             ),
             CustomAppBar(
+              height: 85,
               searchController: _searchController,
               onSearchChanged: (query) {
                 setState(() {
@@ -217,6 +240,15 @@ class _SketchState extends State<Sketch> {
                 });
               },
               onMapPressed: () {},
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            FeatureSection(
+              items: products,
+              section: 'name',
+              section2: 'image',
+              onPressed: () {},
             ),
             SizedBox(
               height: 20,
