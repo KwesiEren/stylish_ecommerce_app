@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
 import 'package:stylish_ecommerce_app/components/constant/text_styles.dart';
+import 'package:stylish_ecommerce_app/screens/skeleton.dart';
 
 import '../../components/widgets/hard_button1.dart';
-import '../main_activity/home_screen.dart';
 
 class GetStartedScreen extends StatefulWidget {
   const GetStartedScreen({super.key});
@@ -16,7 +16,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
   void _nextPage() {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => HomeScreen()),
+      MaterialPageRoute(builder: (context) => MainScreen()),
     );
   }
 

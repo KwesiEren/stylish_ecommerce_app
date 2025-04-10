@@ -63,6 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Size screen = MediaQuery.of(context).size;
+    final double height = screen.height;
+    final double width = screen.width;
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -90,8 +93,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   onPressed: () {},
                 ),
                 SizedBox(
-                  width: 400,
-                  height: 400,
+                  width: width * 0.95,
+                  height: height * 0.70,
                   child: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(

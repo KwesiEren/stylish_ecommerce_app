@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
 import 'package:stylish_ecommerce_app/components/constant/text_styles.dart';
 import 'package:stylish_ecommerce_app/components/widgets/hyperlint_text.dart';
-import 'package:stylish_ecommerce_app/screens/main_activity/home_screen.dart';
+import 'package:stylish_ecommerce_app/screens/skeleton.dart';
 
 import '../../components/widgets/circlecard_widget.dart';
 import '../../components/widgets/hard_button1.dart';
@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void _nextPage() {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => HomeScreen()),
+      MaterialPageRoute(builder: (context) => MainScreen()),
     );
   }
 
