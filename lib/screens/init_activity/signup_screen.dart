@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stylish_ecommerce_app/screens/init_activity/login_screen.dart';
+import 'package:stylish_ecommerce_app/screens/side_activity/getstarted_screen.dart';
 
 import '../../components/constant/colour_scheme.dart';
 import '../../components/constant/text_styles.dart';
@@ -17,6 +18,13 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   bool _hidePassword = true;
+
+  void _nextPage() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => GetStartedScreen()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +115,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               HardButton1(
                 width: width * 0.85, // 85% of screen width
                 text: 'Create Account',
-                onPressed: () {},
+                onPressed: () {
+                  _nextPage();
+                },
               ),
 
               // **Social Login Section**
@@ -124,11 +134,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CirclecardWidget(imageUrl: 'assets/images/google.png'),
+                        CirclecardWidget(
+                            onPressed: () {},
+                            imageUrl: 'assets/images/google.png'),
                         SizedBox(width: width * 0.05),
-                        CirclecardWidget(imageUrl: 'assets/images/apple.png'),
+                        CirclecardWidget(
+                            onPressed: () {},
+                            imageUrl: 'assets/images/apple.png'),
                         SizedBox(width: width * 0.05),
-                        CirclecardWidget(imageUrl: 'assets/images/fb.png'),
+                        CirclecardWidget(
+                            onPressed: () {}, imageUrl: 'assets/images/fb.png'),
                       ],
                     ),
 

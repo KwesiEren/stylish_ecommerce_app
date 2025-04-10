@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import '../constant/colour_scheme.dart';
 
 class CirclecardWidget extends StatefulWidget {
-  final String imageUrl; // Optional: You can use an image URL
+  final String imageUrl;
+  final VoidCallback onPressed;
 
-  const CirclecardWidget({super.key, this.imageUrl = ''});
+  const CirclecardWidget(
+      {super.key, this.imageUrl = '', required this.onPressed});
 
   @override
   State<CirclecardWidget> createState() => _CirclecardWidgetState();
@@ -15,6 +17,7 @@ class _CirclecardWidgetState extends State<CirclecardWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: widget.onPressed,
       child: Container(
         width: 50,
         height: 50,
