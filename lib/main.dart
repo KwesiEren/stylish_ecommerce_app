@@ -1,8 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:stylish_ecommerce_app/screens/sketch.dart';
+import 'provider/order_provider.dart';
+import 'provider/product_provider.dart';
+import 'services/data/order_dao.dart';
+import 'services/data/product_dao.dart';
+import 'services/data/store_db.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final dbHelper = DBHelper();
+  final database = await dbHelper.database;
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+            create: (_) => ProductProvider(ProductDao(database))),
+        ChangeNotifierProvider(
+            create: (_) => OrderProvider(OrdersDao(database))),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -37,4 +37,19 @@ class ProductModel {
       createdAt: DateTime.parse(map["createdAt"]),
     );
   }
+
+  // toMap method
+  Map<String, dynamic> toMap() {
+    return {
+      "product_id": product_id,
+      "image_url": imageUrl,
+      "product_name": product_name,
+      "product_details": product_details,
+      "product_description": product_description,
+      "product_type": product_type,
+      "product_price": product_price,
+      "product_rating": product_rating,
+      "createdAt": createdAt.toIso8601String(),
+    };
+  }
 }
