@@ -42,7 +42,7 @@ class ProductCard extends StatelessWidget {
           // Product Image
           Container(
             width: 167,
-            height: 130,
+            height: 120,
             decoration: BoxDecoration(
               color: card_color,
               borderRadius: BorderRadius.circular(10),
@@ -60,11 +60,11 @@ class ProductCard extends StatelessWidget {
 
           // Product Info
           Padding(
-            padding: const EdgeInsets.all(5.0),
+            padding: const EdgeInsets.only(left: 5.0, right: 5.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(productName, style: kheading2),
+                Text(productName, style: kheading4),
                 Text(
                   productDetails,
                   style: kheading3,

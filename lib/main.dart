@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stylish_ecommerce_app/screens/sketch.dart';
+import 'provider/api_provider.dart';
 import 'provider/order_provider.dart';
 import 'provider/product_provider.dart';
 import 'services/data/order_dao.dart';
@@ -11,14 +12,19 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final dbHelper = DBHelper();
+
   final database = await dbHelper.database;
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
+            create: (_) => ApiProvider(orderDao: OrdersDao(database))),
+        ChangeNotifierProvider(
             create: (_) => ProductProvider(ProductDao(database))),
         ChangeNotifierProvider(
-            create: (_) => OrderProvider(OrdersDao(database))),
+            create: (_) => OrderProvider(
+                  OrdersDao(database),
+                )),
       ],
       child: MyApp(),
     ),

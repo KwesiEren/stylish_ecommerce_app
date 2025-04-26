@@ -33,6 +33,7 @@ class ApiProvider with ChangeNotifier {
   /// Login user and store token
   Future<Map<String, dynamic>> login(String email, String password) async {
     final result = await _apiService.loginUser(email, password);
+    debugPrint('Login: $result');
     if (result.containsKey("token")) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString("auth_token", result["token"]);

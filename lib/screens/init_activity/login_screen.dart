@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
 import 'package:stylish_ecommerce_app/components/constant/text_styles.dart';
 import 'package:stylish_ecommerce_app/components/widgets/hyperlint_text.dart';
@@ -7,6 +8,7 @@ import 'package:stylish_ecommerce_app/screens/skeleton.dart';
 import '../../components/widgets/circlecard_widget.dart';
 import '../../components/widgets/hard_button1.dart';
 import '../../components/widgets/inputfield&icon_widget.dart';
+import '../../provider/api_provider.dart';
 import 'recover_screen.dart';
 import 'signup_screen.dart';
 
@@ -18,6 +20,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  String? _error;
+
+  bool _loading = false;
   bool _hidePassword = true;
 
   void _nextPage() {
@@ -25,6 +33,36 @@ class _LoginScreenState extends State<LoginScreen> {
       context,
       MaterialPageRoute(builder: (context) => MainScreen()),
     );
+  }
+
+  void _login() async {
+    final apiProvider = Provider.of<ApiProvider>(context, listen: false);
+    setState(() {
+      _loading = true;
+      _error = null;
+    });
+
+    try {
+      final success = await apiProvider.login(
+        _emailController.text,
+        _passwordController.text,
+      );
+      if (success.containsKey('error')) {
+        setState(() {
+          _error = "Login failed. Check credentials.";
+          _loading = false;
+        });
+      } else {
+        // Navigate to home screen
+        _nextPage();
+      }
+    } catch (e) {
+      print(e);
+      setState(() {
+        _error = "There was a problem";
+        _loading = false;
+      });
+    }
   }
 
   @override
@@ -53,10 +91,15 @@ class _LoginScreenState extends State<LoginScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  InputField1(icon: Icons.person, hint: 'Username or Email'),
+                  InputField1(
+                    icon: Icons.person,
+                    controller: _emailController,
+                    hint: 'Username or Email',
+                  ),
                   SizedBox(height: height * 0.03),
                   InputField1(
                     icon: Icons.lock,
+                    controller: _passwordController,
                     hint: 'Password',
                     hideText: _hidePassword,
                     suffixIcon: Icons.visibility,
@@ -82,6 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 text: 'Login',
                 onPressed: () {
                   _nextPage();
+                  // _login();
                 },
               ),
 

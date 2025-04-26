@@ -4,7 +4,7 @@ class ApiService {
   final Dio _dio = Dio(
     BaseOptions(
       baseUrl:
-          "https://e56a-154-160-5-197.ngrok-free.app/api", // Update with your ngrok URL
+          "https://4901-154-161-42-8.ngrok-free.app/api", // Update with your ngrok URL
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
       headers: {
@@ -21,11 +21,28 @@ class ApiService {
   // 🔹 **Handle API Errors**
   dynamic _handleError(DioException e) {
     if (e.response != null) {
-      return {"error": e.response?.data["error"] ?? "Something went wrong"};
+      final data = e.response?.data;
+
+      print("API Error Response: ${data}");
+
+      // Check if it's a Map (so we can safely access by key)
+      if (data is Map<String, dynamic>) {
+        return {"error": data["error"] ?? "Something went wrong"};
+      } else {
+        return {"error": "Unexpected response format"};
+      }
     } else {
       return {"error": "Network error. Please try again"};
     }
   }
+
+  // dynamic _handleError(DioException e) {
+  //   if (e.response != null) {
+  //     return {"error": e.response?.data["error"] ?? "Something went wrong"};
+  //   } else {
+  //     return {"error": "Network error. Please try again"};
+  //   }
+  // }
 
   // ===========================================
   // ✅ **USER AUTHENTICATION**
@@ -35,7 +52,7 @@ class ApiService {
   Future<Map<String, dynamic>> registerUser(
       String name, String email, String password) async {
     try {
-      Response response = await _dio.post("/auth/register", data: {
+      Response response = await _dio.post("/register", data: {
         "user_name": name,
         "user_email": email,
         "password": password,
@@ -49,7 +66,7 @@ class ApiService {
   // 🔹 Login User
   Future<Map<String, dynamic>> loginUser(String email, String password) async {
     try {
-      Response response = await _dio.post("/auth/login", data: {
+      Response response = await _dio.post("/login", data: {
         "user_email": email,
         "password": password,
       });

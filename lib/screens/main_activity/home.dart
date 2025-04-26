@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:stylish_ecommerce_app/components/widgets/appbar_widget/appbar_widget.dart';
 import 'package:stylish_ecommerce_app/screens/sketch.dart';
 
 import '../../components/widgets/card1.dart';
 import '../../components/widgets/featured_product_widget/featured_section.dart';
+import '../../models/product_model.dart';
+import '../../provider/product_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,43 +19,15 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
 
-  final List<Map<String, dynamic>> products = [
-    {
-      "name": "Shoes",
-      "image": "assets/images/onb_1.png",
-      "details": "Running Shoes",
-      "price": 49.99,
-      "rating": 3.5
-    },
-    {
-      "name": "Watch",
-      "image": "assets/images/onb_1.png",
-      "details": "Smart Watch",
-      "price": 99.99,
-      "rating": 2.2
-    },
-    {
-      "name": "Phone",
-      "image": "assets/images/onb_1.png",
-      "details": "Android Phone",
-      "price": 699.99,
-      "rating": 4.8
-    },
-    {
-      "name": "Shoes",
-      "image": "assets/images/onb_1.png",
-      "details": "Running Shoes",
-      "price": 49.99,
-      "rating": 1.5
-    },
-    {
-      "name": "Watch",
-      "image": "assets/images/onb_1.png",
-      "details": "Smart Watch",
-      "price": 99.99,
-      "rating": 4.2
-    },
-  ];
+  final List<Map<String, dynamic>> productz = [];
+
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      Provider.of<ProductProvider>(context, listen: false).fetchProducts();
+    });
+  }
 
   void _nextPage(Widget target) {
     Navigator.pushReplacement(
@@ -63,9 +38,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final productProvider = Provider.of<ProductProvider>(context);
+    final List<ProductModel> products = productProvider.products;
+    final bool isLoading = productProvider.isLoading;
+
     final Size screen = MediaQuery.of(context).size;
     final double height = screen.height;
     final double width = screen.width;
+
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -78,47 +58,56 @@ class _HomeScreenState extends State<HomeScreen> {
             });
           },
           onMapPressed: () {
-            _nextPage(Sketch());
+            _nextPage(const Sketch());
           },
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(10),
-            child: Column(
-              children: [
-                FeatureSection(
-                  items: products,
-                  section: 'name',
-                  section2: 'image',
-                  onPressed: () {},
-                ),
-                SizedBox(
-                  width: width * 0.95,
-                  height: height * 0.70,
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, // Two items per row
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      childAspectRatio: 0.7,
-                    ),
-                    itemCount: products.length,
-                    itemBuilder: (context, index) {
-                      final product = products[index];
-                      return ProductCard(
-                        productName: product["name"],
-                        productDetails: product["details"],
-                        price: product["price"],
-                        rating: product["rating"],
-                      );
-                    },
+        body: isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : SingleChildScrollView(
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+                      if (productz.isNotEmpty)
+                        FeatureSection(
+                          items: productz,
+                          section2: 'image',
+                          section: 'product_type',
+                          onPressed: () {},
+                        ),
+                      if (productz.isEmpty)
+                        Text(
+                          'NO DATA YET!',
+                        ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        width: width * 0.95,
+                        height: height * 0.70,
+                        child: GridView.builder(
+                          itemCount: products.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
+                            childAspectRatio: 0.7,
+                          ),
+                          itemBuilder: (context, index) {
+                            final product = products[index];
+                            return ProductCard(
+                              imageUrl: product.imageUrl,
+                              productName: product.product_name,
+                              productDetails: product.product_details ?? '',
+                              price: product.product_price,
+                              rating: product.product_rating ?? 0,
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
-        ),
+              ),
       ),
     );
   }

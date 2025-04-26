@@ -27,6 +27,12 @@ const kheading2 = TextStyle(
     fontWeight: FontWeight.w600,
     color: text_color1);
 
+const kheading4 = TextStyle(
+    fontSize: 17,
+    fontFamily: 'Monserrat',
+    fontWeight: FontWeight.w600,
+    color: text_color1);
+
 const kheading3 = TextStyle(
     fontSize: 15,
     fontFamily: 'Overpass',

@@ -32,8 +32,10 @@ class ProductModel {
       product_details: map["product_details"],
       product_description: map["product_description"],
       product_type: map["product_type"],
-      product_rating: map["product_rating"],
-      product_price: map["product_price"],
+      product_rating: map["product_rating"] != null
+          ? double.tryParse(map["product_rating"].toString())
+          : null,
+      product_price: double.tryParse(map["product_price"].toString()) ?? 0.0,
       createdAt: DateTime.parse(map["createdAt"]),
     );
   }

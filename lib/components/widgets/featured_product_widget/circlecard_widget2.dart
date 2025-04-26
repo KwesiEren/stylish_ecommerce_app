@@ -41,7 +41,7 @@ class _CircleCard2State extends State<CircleCard2> {
                 ? const Icon(Icons.image, color: Colors.grey)
                 : Padding(
                     padding: const EdgeInsets.all(8),
-                    child: Image.asset(
+                    child: Image.network(
                       widget.imgUrl,
                       fit: BoxFit.contain,
                     ),
