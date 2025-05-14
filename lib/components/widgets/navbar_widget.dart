@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../constant/colour_scheme.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
@@ -18,6 +17,7 @@ class CustomBottomNavBar extends StatefulWidget {
 
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   bool isClicked = false;
+
   @override
   Widget build(BuildContext context) {
     final Size screen = MediaQuery.of(context).size;
@@ -26,6 +26,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
     Color buttonColor1 = isClicked ? buton_color2 : base_color;
     Color buttonColor2 = isClicked ? base_color : text_color1;
+
     double iconSize = isClicked ? 30 : 25;
     return Stack(
       alignment: Alignment.bottomCenter,
@@ -76,13 +77,17 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   Widget _buildTabItem(IconData icon, String label, int index) {
     final bool isSelected = widget.selectedIndex == index;
+    Color buttonColor3 = isSelected ? buton_color2 : text_color1;
     return InkWell(
       onTap: () => widget.onItemTapped(index),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: Colors.black),
-          Text(label, style: TextStyle(fontSize: 12)),
+          Icon(icon, color: isSelected ? buttonColor3 : Colors.black),
+          Text(label,
+              style: TextStyle(
+                  color: isSelected ? buttonColor3 : Colors.black,
+                  fontSize: 12)),
         ],
       ),
     );

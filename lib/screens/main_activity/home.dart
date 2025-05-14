@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:stylish_ecommerce_app/components/widgets/appbar_widget/appbar_widget.dart';
-import 'package:stylish_ecommerce_app/screens/sketch.dart';
-
-import '../../components/widgets/card1.dart';
-import '../../components/widgets/featured_product_widget/featured_section.dart';
 import '../../models/product_model.dart';
-import '../../provider/category_provider.dart';
+import '../../components/widgets/card1.dart';
 import '../../provider/product_provider.dart';
+import '../../provider/category_provider.dart';
+import '../../components/widgets/featured_product_widget/featured_section.dart';
+import 'package:stylish_ecommerce_app/components/widgets/appbar_widget/appbar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -81,29 +79,29 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: isLoading
             ? const Center(child: CircularProgressIndicator())
-            : SingleChildScrollView(
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                    children: [
-                      if (categoryProvider.isLoading)
-                        CircularProgressIndicator()
-                      else
-                        FeatureSection(
-                          categories: categoryProvider.categories,
-                          onCategorySelected: _onCategorySelected,
-                        ),
-                      const SizedBox(height: 10),
-                      SizedBox(
-                        width: width * 0.95,
-                        height: height * 0.70,
+            : Container(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    if (categoryProvider.isLoading)
+                      CircularProgressIndicator()
+                    else
+                      FeatureSection(
+                        categories: categoryProvider.categories,
+                        onCategorySelected: _onCategorySelected,
+                      ),
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      width: width * 0.99,
+                      height: height * 0.47636,
+                      child: Center(
                         child: GridView.builder(
                           itemCount: products.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 1,
+                            mainAxisSpacing: 0,
                             childAspectRatio: 0.7,
                           ),
                           itemBuilder: (context, index) {
@@ -118,8 +116,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
       ),

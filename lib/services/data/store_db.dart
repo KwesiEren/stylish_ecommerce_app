@@ -1,5 +1,5 @@
-import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 class DBHelper {
   static final DBHelper _instance = DBHelper._internal();
@@ -30,13 +30,9 @@ class DBHelper {
     await db.execute('''
       CREATE TABLE products(
         product_id TEXT PRIMARY KEY,
-        image_url TEXT,
         product_name TEXT,
-        product_details TEXT,
         product_type TEXT,
-        product_price TEXT,
-        product_rating REAL,
-        date_created TEXT
+        product_price TEXT
       )
     ''');
 

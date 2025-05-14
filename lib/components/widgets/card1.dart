@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-
-import '../constant/colour_scheme.dart';
-import '../constant/text_styles.dart';
 import 'ratings_tray.dart';
+import '../constant/text_styles.dart';
+import 'package:flutter/material.dart';
+import '../constant/colour_scheme.dart';
 
 class ProductCard extends StatelessWidget {
   final String productName;
@@ -22,63 +21,71 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 150,
-      height: 250,
-      decoration: BoxDecoration(
-        color: card_color2,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          const BoxShadow(
-            color: Color.fromARGB(70, 0, 0, 0),
-            blurRadius: 2,
-            offset: Offset(0, 2),
+    return Column(
+      children: [
+        Container(
+          width: 150,
+          height: 245,
+          decoration: BoxDecoration(
+            color: card_color2,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              const BoxShadow(
+                color: Color.fromARGB(70, 0, 0, 0),
+                blurRadius: 2,
+                offset: Offset(0, 2),
+              ),
+            ],
           ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          // Product Image
-          Container(
-            width: 167,
-            height: 120,
-            decoration: BoxDecoration(
-              color: card_color2,
-              borderRadius: BorderRadius.circular(10),
-              image: imageUrl.isNotEmpty
-                  ? DecorationImage(
-                      image: NetworkImage(imageUrl),
-                      fit: BoxFit.cover,
-                    )
-                  : null,
-            ),
-            child: imageUrl.isEmpty
-                ? const Icon(Icons.image, size: 40, color: Colors.grey)
-                : null,
-          ),
-
-          // Product Info
-          Padding(
-            padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(productName, style: kheading4),
-                Text(
-                  productDetails,
-                  style: kheading3,
-                  overflow: TextOverflow.ellipsis,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // Product Image
+              Container(
+                width: 190,
+                height: 120,
+                decoration: BoxDecoration(
+                  color: card_color2,
+                  borderRadius: BorderRadius.circular(10),
+                  image: imageUrl.isNotEmpty
+                      ? DecorationImage(
+                          image: NetworkImage(imageUrl),
+                          fit: BoxFit.cover,
+                        )
+                      : null,
                 ),
-                Text('\$${price.toStringAsFixed(2)}', style: kheading2),
+                child: imageUrl.isEmpty
+                    ? const Icon(Icons.image, size: 40, color: Colors.grey)
+                    : null,
+              ),
 
-                // Rating Tray
-                RatingsTray(rating: rating),
-              ],
-            ),
+              // Product Info
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(productName, style: kheading4),
+                    Text(
+                      productDetails,
+                      style: kheading3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text('\$${price.toStringAsFixed(2)}', style: kheading2),
+
+                    // Rating Tray
+                    RatingsTray(rating: rating),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+        SizedBox(
+          height: 0.5,
+        )
+      ],
     );
   }
 }

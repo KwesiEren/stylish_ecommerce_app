@@ -39,8 +39,15 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: const Color.fromARGB(190, 126, 126, 126),
+              blurRadius: 3,
+            )
+          ],
+          color: Colors.white,
           border: Border.all(
-            color: text_color2,
+            color: Colors.transparent,
             width: 1,
           ),
           borderRadius: BorderRadius.circular(8)),

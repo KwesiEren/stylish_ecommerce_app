@@ -1,0 +1,2 @@
+/Users/cersgis-imac-01/Desktop/stylish_ecommerce_app/android/app/.cxx/Debug/1u586j71/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/cersgis-imac-01/Desktop/stylish_ecommerce_app/android/app/.cxx/Debug/1u586j71/arm64-v8a/CMakeFiles/rebuild_cache.dir

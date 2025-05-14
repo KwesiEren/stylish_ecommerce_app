@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:stylish_ecommerce_app/screens/main_activity/home.dart';
-
 import '../components/widgets/navbar_widget.dart';
+import 'package:stylish_ecommerce_app/screens/main_activity/home.dart';
+import 'package:stylish_ecommerce_app/screens/main_activity/wishlist.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -16,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _tabs = const [
     HomeScreen(),
-    // WishlistTab(),
+    WishListScreen(),
     // SearchTab(),
     // SettingsTab(),
     // CartTab(),

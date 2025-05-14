@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
 import 'package:stylish_ecommerce_app/components/constant/text_styles.dart';
+import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
 
 class CircleCard2 extends StatefulWidget {
   final String text;
   final String imgUrl;
+  final Color? borderclr;
   final VoidCallback onPressed;
 
   CircleCard2(
       {super.key,
       required this.text,
       this.imgUrl = '',
+      this.borderclr,
       required this.onPressed});
 
   @override
@@ -41,7 +43,8 @@ class _CircleCard2State extends State<CircleCard2> {
                 ),
               ),
               color: const Color.fromARGB(19, 255, 129, 152),
-              border: Border.all(color: buton_color2, width: 1),
+              border:
+                  Border.all(color: widget.borderclr ?? buton_color2, width: 1),
             ),
             // child: widget.imgUrl.isEmpty
             //     ? const Icon(Icons.image, color: Colors.grey)
