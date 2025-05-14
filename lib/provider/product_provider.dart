@@ -48,6 +48,20 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> fetchProductsByCategory(String categoryId) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      _products = await apiService.fetchProductsByCategory(categoryId);
+    } catch (e) {
+      print('Error loading products by category: $e');
+    }
+
+    _isLoading = false;
+    notifyListeners();
+  }
+
   void clearProducts() {
     _products = [];
     notifyListeners();

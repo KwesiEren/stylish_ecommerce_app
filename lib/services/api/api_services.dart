@@ -1,10 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+
+import '../../models/category_model.dart';
+import '../../models/product_model.dart';
 
 class ApiService {
   final Dio _dio = Dio(
     BaseOptions(
       baseUrl:
-          "https://4901-154-161-42-8.ngrok-free.app/api", // Update with your ngrok URL
+          "https://6a93-154-161-158-68.ngrok-free.app/api", // Update with your ngrok URL
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
       headers: {
@@ -73,6 +77,34 @@ class ApiService {
       return response.data;
     } catch (e) {
       return _handleError(e as DioException);
+    }
+  }
+
+  // ===========================================
+  // ✅ **CATEGORIES API**
+  // ===========================================
+  Future<List<CategoryModel>> fetchCategories() async {
+    try {
+      final response = await _dio.get('/categories');
+      final List data = response.data;
+      return data.map((item) => CategoryModel.fromMap(item)).toList();
+    } catch (e) {
+      debugPrint('API Error fetching categories: $e');
+      throw Exception('Failed to load categories');
+    }
+  }
+
+  Future<List<ProductModel>> fetchProductsByCategory(String category_id) async {
+    try {
+      final response = await _dio.get('/products', queryParameters: {
+        'category': category_id,
+      });
+
+      final List data = response.data;
+      return data.map((item) => ProductModel.fromMap(item)).toList();
+    } catch (e) {
+      debugPrint('API Error fetching products by category: $e');
+      throw Exception('Failed to load products by category');
     }
   }
 

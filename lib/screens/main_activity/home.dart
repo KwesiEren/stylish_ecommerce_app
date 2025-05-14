@@ -6,6 +6,7 @@ import 'package:stylish_ecommerce_app/screens/sketch.dart';
 import '../../components/widgets/card1.dart';
 import '../../components/widgets/featured_product_widget/featured_section.dart';
 import '../../models/product_model.dart';
+import '../../provider/category_provider.dart';
 import '../../provider/product_provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String? selectedCategoryId;
   TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
 
@@ -25,8 +27,22 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     Future.microtask(() {
+      Provider.of<CategoryProvider>(context, listen: false).fetchCategories();
       Provider.of<ProductProvider>(context, listen: false).fetchProducts();
     });
+  }
+
+  Future<void> _loadall() async {
+    Provider.of<CategoryProvider>(context, listen: false).fetchCategories();
+    await Provider.of<ProductProvider>(context, listen: false).fetchProducts();
+  }
+
+  void _onCategorySelected(String categoryId) {
+    setState(() {
+      selectedCategoryId = categoryId;
+    });
+    Provider.of<ProductProvider>(context, listen: false)
+        .fetchProductsByCategory(selectedCategoryId!);
   }
 
   void _nextPage(Widget target) {
@@ -38,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final categoryProvider = Provider.of<CategoryProvider>(context);
     final productProvider = Provider.of<ProductProvider>(context);
     final List<ProductModel> products = productProvider.products;
     final bool isLoading = productProvider.isLoading;
@@ -58,7 +75,8 @@ class _HomeScreenState extends State<HomeScreen> {
             });
           },
           onMapPressed: () {
-            _nextPage(const Sketch());
+            _loadall();
+            // _nextPage(const Sketch());
           },
         ),
         body: isLoading
@@ -68,16 +86,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     children: [
-                      if (productz.isNotEmpty)
+                      if (categoryProvider.isLoading)
+                        CircularProgressIndicator()
+                      else
                         FeatureSection(
-                          items: productz,
-                          section2: 'image',
-                          section: 'product_type',
-                          onPressed: () {},
-                        ),
-                      if (productz.isEmpty)
-                        Text(
-                          'NO DATA YET!',
+                          categories: categoryProvider.categories,
+                          onCategorySelected: _onCategorySelected,
                         ),
                       const SizedBox(height: 10),
                       SizedBox(

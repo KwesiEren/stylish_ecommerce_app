@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:stylish_ecommerce_app/provider/category_provider.dart';
 import 'package:stylish_ecommerce_app/screens/sketch.dart';
 import 'provider/api_provider.dart';
 import 'provider/order_provider.dart';
@@ -21,6 +22,7 @@ void main() async {
             create: (_) => ApiProvider(orderDao: OrdersDao(database))),
         ChangeNotifierProvider(
             create: (_) => ProductProvider(ProductDao(database))),
+        ChangeNotifierProvider(create: (_) => CategoryProvider()),
         ChangeNotifierProvider(
             create: (_) => OrderProvider(
                   OrdersDao(database),

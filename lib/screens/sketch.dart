@@ -244,12 +244,12 @@ class _SketchState extends State<Sketch> {
             SizedBox(
               height: 20,
             ),
-            FeatureSection(
-              items: products,
-              section: 'name',
-              section2: 'image',
-              onPressed: () {},
-            ),
+            // FeatureSection(
+            //   items: products,
+            //   section: 'name',
+            //   section2: 'image',
+            //   onPressed: () {},
+            // ),
             SizedBox(
               height: 20,
             ),

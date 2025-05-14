@@ -34,18 +34,21 @@ class _CircleCard2State extends State<CircleCard2> {
             height: 50,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
+              image: DecorationImage(
+                fit: BoxFit.fitHeight,
+                image: NetworkImage(
+                  widget.imgUrl,
+                ),
+              ),
               color: const Color.fromARGB(19, 255, 129, 152),
               border: Border.all(color: buton_color2, width: 1),
             ),
-            child: widget.imgUrl.isEmpty
-                ? const Icon(Icons.image, color: Colors.grey)
-                : Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Image.network(
-                      widget.imgUrl,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
+            // child: widget.imgUrl.isEmpty
+            //     ? const Icon(Icons.image, color: Colors.grey)
+            //     : Image.network(
+            //         widget.imgUrl,
+            //         fit: BoxFit.cover,
+            //       ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

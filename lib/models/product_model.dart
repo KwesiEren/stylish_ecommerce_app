@@ -1,3 +1,5 @@
+import 'category_model.dart';
+
 class ProductModel {
   // Declaring Product Parameters
   final String product_id;
@@ -5,21 +7,22 @@ class ProductModel {
   final String product_name;
   final String? product_details;
   final String? product_description;
-  final String product_type;
+  final CategoryModel category;
   final double product_price;
   final double? product_rating;
   final DateTime createdAt;
 
-  ProductModel(
-      {required this.product_id,
-      required this.imageUrl,
-      required this.product_name,
-      this.product_details,
-      this.product_description,
-      required this.product_type,
-      this.product_rating,
-      required this.product_price,
-      required this.createdAt});
+  ProductModel({
+    required this.product_id,
+    required this.imageUrl,
+    required this.product_name,
+    this.product_details,
+    this.product_description,
+    this.product_rating,
+    required this.product_price,
+    required this.createdAt,
+    required this.category,
+  });
 
   /// Methods For Changing State of data ///
 
@@ -31,12 +34,12 @@ class ProductModel {
       product_name: map["product_name"],
       product_details: map["product_details"],
       product_description: map["product_description"],
-      product_type: map["product_type"],
       product_rating: map["product_rating"] != null
           ? double.tryParse(map["product_rating"].toString())
           : null,
       product_price: double.tryParse(map["product_price"].toString()) ?? 0.0,
       createdAt: DateTime.parse(map["createdAt"]),
+      category: CategoryModel.fromMap(map["category"]),
     );
   }
 
@@ -48,7 +51,7 @@ class ProductModel {
       "product_name": product_name,
       "product_details": product_details,
       "product_description": product_description,
-      "product_type": product_type,
+      "category": category.toMap(),
       "product_price": product_price,
       "product_rating": product_rating,
       "createdAt": createdAt.toIso8601String(),

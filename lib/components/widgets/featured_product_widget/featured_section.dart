@@ -1,57 +1,35 @@
 import 'package:flutter/material.dart';
+
+import '../../../models/category_model.dart';
 import 'circlecard_widget2.dart';
 
-class FeatureSection extends StatefulWidget {
-  final List items;
-  final String section;
-  final String section2;
-  final VoidCallback onPressed;
+class FeatureSection extends StatelessWidget {
+  final List<CategoryModel> categories;
+  final Function(String categoryId) onCategorySelected;
 
-  FeatureSection(
-      {super.key,
-      required this.items,
-      required this.section,
-      required this.section2,
-      required this.onPressed});
+  const FeatureSection({
+    Key? key,
+    required this.categories,
+    required this.onCategorySelected,
+  }) : super(key: key);
 
-  @override
-  State<FeatureSection> createState() => _FeatureSectionState();
-}
-
-class _FeatureSectionState extends State<FeatureSection> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Featured',
-            style: TextStyle(
-                fontSize: 18,
-                fontFamily: 'Monserrat',
-                fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            width: 320,
-            height: 100,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: widget.items.length,
-              itemBuilder: (BuildContext context, int index) {
-                final item = widget.items[index];
-                return Padding(
-                  padding: const EdgeInsets.all(3),
-                  child: CircleCard2(
-                    imgUrl: item[widget.section2],
-                    text: item[widget.section],
-                    onPressed: widget.onPressed,
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
+      height: 120,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          final category = categories[index];
+          return Padding(
+            padding: const EdgeInsets.all(5),
+            child: CircleCard2(
+                imgUrl: category.imageUrl!,
+                text: category.name,
+                onPressed: () => onCategorySelected(category.category_id)),
+          );
+        },
       ),
     );
   }
