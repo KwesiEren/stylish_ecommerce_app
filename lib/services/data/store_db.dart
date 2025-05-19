@@ -36,6 +36,15 @@ class DBHelper {
       )
     ''');
 
+    // WISHLIST TABLE
+    await db.execute('''
+     CREATE TABLE wishlists (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  product_id TEXT NOT NULL UNIQUE,
+  added_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+    ''');
+
     // ORDERS TABLE
     await db.execute('''
       CREATE TABLE orders(

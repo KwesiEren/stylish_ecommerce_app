@@ -8,7 +8,7 @@ class ApiService {
   final Dio _dio = Dio(
     BaseOptions(
       baseUrl:
-          "https://6a93-154-161-158-68.ngrok-free.app/api", // Update with your ngrok URL
+          "https://j85nv7qj-5000.uks1.devtunnels.ms/api", // Update with your ngrok URL
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
       headers: {
@@ -130,6 +130,14 @@ class ApiService {
     } catch (e) {
       return null;
     }
+  }
+
+  // 🔹 Get Multiple Products by IDs
+  Future<List<ProductModel>> fetchProductsByIds(List<String> ids) async {
+    final response = await _dio.get('/products', queryParameters: {
+      'ids': ids.join(','),
+    });
+    return (response.data as List).map((m) => ProductModel.fromMap(m)).toList();
   }
 
   // 🔹 Create a Product (Admin Only)
