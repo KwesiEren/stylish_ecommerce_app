@@ -9,8 +9,8 @@ class ApiService {
     BaseOptions(
       baseUrl:
           "https://j85nv7qj-5000.uks1.devtunnels.ms/api", // Update with your ngrok URL
-      connectTimeout: const Duration(seconds: 10),
-      receiveTimeout: const Duration(seconds: 10),
+      connectTimeout: const Duration(seconds: 30),
+      receiveTimeout: const Duration(seconds: 30),
       headers: {
         'Content-Type': 'application/json',
       },
