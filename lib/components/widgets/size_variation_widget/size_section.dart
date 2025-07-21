@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'size_button.dart';
+import 'package:flutter/material.dart';
 
 class SizeSection extends StatefulWidget {
   final List items;
@@ -34,7 +34,7 @@ class _SizeSectionState extends State<SizeSection> {
                 fontWeight: FontWeight.bold),
           ),
           SizedBox(
-            width: 300,
+            width: 295,
             height: 50,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,

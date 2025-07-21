@@ -5,6 +5,7 @@ import '../../components/widgets/card1.dart';
 import '../../provider/product_provider.dart';
 import '../../provider/category_provider.dart';
 import '../../components/widgets/featured_product_widget/featured_section.dart';
+import 'package:stylish_ecommerce_app/screens/main_activity/products_details.dart';
 import 'package:stylish_ecommerce_app/components/widgets/appbar_widget/appbar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -106,12 +107,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           itemBuilder: (context, index) {
                             final product = products[index];
-                            return ProductCard(
-                              imageUrl: product.imageUrl,
-                              productName: product.product_name,
-                              productDetails: product.product_details ?? '',
-                              price: product.product_price,
-                              rating: product.product_rating ?? 0,
+                            return GestureDetector(
+                              onTap: () => _nextPage(ProductDetailScreen(product_name:product.product_name, product_description: product.product_details, product_price: product.product_price, product_details: product.product_description, product_rating: product.product_rating,)),
+                              child: ProductCard(
+                                imageUrl: product.imageUrl,
+                                productName: product.product_name,
+                                productDetails: product.product_details ?? '',
+                                price: product.product_price,
+                                rating: product.product_rating ?? 0,
+                              ),
                             );
                           },
                         ),

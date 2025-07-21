@@ -1,17 +1,18 @@
-import 'package:flutter/material.dart';
-
 import '../models/product_model.dart';
+import 'package:flutter/material.dart';
 import '../services/api/api_services.dart';
 import '../services/data/wishlist_dao.dart';
 
 class WishlistProvider with ChangeNotifier {
   final WishlistDao _dao;
-  final ApiService _api;
+  final ApiService _api = ApiService();
 
   List<ProductModel> _items = [];
   List<ProductModel> get items => _items;
 
-  WishlistProvider(this._dao, this._api);
+  WishlistProvider(
+    this._dao,
+  );
 
   Future<void> loadWishlist() async {
     // 1. load IDs locally

@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
-import 'package:stylish_ecommerce_app/components/widgets/advert_widgets/ad_widget1.dart';
-import 'package:stylish_ecommerce_app/components/widgets/advert_widgets/ad_widget3.dart';
-import 'package:stylish_ecommerce_app/components/widgets/caption_placeholder1.dart';
-import 'package:stylish_ecommerce_app/components/widgets/card1.dart';
-import 'package:stylish_ecommerce_app/components/widgets/circlecard_widget.dart';
-import 'package:stylish_ecommerce_app/components/widgets/featured_product_widget/featured_section.dart';
-import 'package:stylish_ecommerce_app/components/widgets/hard_button1.dart';
-import 'package:stylish_ecommerce_app/components/widgets/hyperlint_text.dart';
-import 'package:stylish_ecommerce_app/components/widgets/inputfield&icon_widget.dart';
-import 'package:stylish_ecommerce_app/components/widgets/size_variation_widget/size_section.dart';
-import 'package:stylish_ecommerce_app/screens/init_activity/onboarding_screen.dart';
-
 import '../components/widgets/advert_widgets/ad_widget2.dart';
 import '../components/widgets/advert_widgets/ad_widget4.dart';
 import '../components/widgets/appbar_widget/appbar_widget.dart';
+import 'package:stylish_ecommerce_app/components/widgets/card1.dart';
+import 'package:stylish_ecommerce_app/components/widgets/hard_button1.dart';
+import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
+import 'package:stylish_ecommerce_app/components/widgets/hyperlint_text.dart';
+import 'package:stylish_ecommerce_app/components/widgets/circlecard_widget.dart';
+import 'package:stylish_ecommerce_app/components/widgets/caption_placeholder1.dart';
+import 'package:stylish_ecommerce_app/screens/init_activity/onboarding_screen.dart';
+import 'package:stylish_ecommerce_app/components/widgets/inputfield&icon_widget.dart';
+import 'package:stylish_ecommerce_app/components/widgets/advert_widgets/ad_widget1.dart';
+import 'package:stylish_ecommerce_app/components/widgets/advert_widgets/ad_widget3.dart';
+import 'package:stylish_ecommerce_app/components/widgets/size_variation_widget/size_section.dart';
+
 
 class Sketch extends StatefulWidget {
   const Sketch({super.key});

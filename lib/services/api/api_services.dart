@@ -1,14 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-
-import '../../models/category_model.dart';
 import '../../models/product_model.dart';
+import '../../models/category_model.dart';
 
 class ApiService {
   final Dio _dio = Dio(
     BaseOptions(
       baseUrl:
-          "https://j85nv7qj-5000.uks1.devtunnels.ms/api", // Update with your ngrok URL
+          "https://rl255kdm-5000.uks1.devtunnels.ms/api", // Update with your ngrok URL
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
       headers: {
