@@ -51,6 +51,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  void _moredetails(Widget target) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => target),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final categoryProvider = Provider.of<CategoryProvider>(context);
@@ -108,7 +115,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemBuilder: (context, index) {
                             final product = products[index];
                             return GestureDetector(
-                              onTap: () => _nextPage(ProductDetailScreen(product_name:product.product_name, product_description: product.product_details, product_price: product.product_price, product_details: product.product_description, product_rating: product.product_rating,)),
+                              onTap: () => _moredetails(ProductDetailScreen(
+                                product_image: product.imageUrl,
+                                product_name: product.product_name,
+                                product_description: product.product_details,
+                                product_price: product.product_price,
+                                product_details: product.product_description,
+                                product_rating: product.product_rating,
+                              )),
                               child: ProductCard(
                                 imageUrl: product.imageUrl,
                                 productName: product.product_name,

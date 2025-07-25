@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:stylish_ecommerce_app/components/constant/text_styles.dart';
 import 'package:stylish_ecommerce_app/components/widgets/hard_button3.dart';
 import 'package:stylish_ecommerce_app/components/widgets/ratings_tray.dart';
 import 'package:stylish_ecommerce_app/components/widgets/size_variation_widget/size_section.dart';
 
 class ProductDetailScreen extends StatefulWidget {
+  final String product_image;
   final String product_name;
   final String? product_description;
   final double? product_rating;
@@ -11,6 +13,7 @@ class ProductDetailScreen extends StatefulWidget {
   final String? product_details;
   const ProductDetailScreen(
       {super.key,
+      required this.product_image,
       required this.product_name,
       required this.product_rating,
       required this.product_description,
@@ -35,7 +38,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: Icon(
             Icons.arrow_back_ios,
           ),
@@ -65,31 +70,61 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       body: Padding(
         padding: EdgeInsets.all(15),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 200,
-              height: 100,
-              color: Colors.amber,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(widget.product_image),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
+              width: 350,
+              height: 200,
             ),
             SizedBox(
               height: 20,
             ),
-            SizeSection(items: sizes, section: 'size1'),
             SizedBox(
+              height: 400,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('${widget.product_name}'),
-                  Text('${widget.product_description}'),
-                  RatingsTray(rating: widget.product_rating ?? 1),
-                  Text('\$${widget.product_price}'),
-                  Text('Product Details'),
-                  Text('${widget.product_details}')
+                  SizeSection(items: sizes, section: 'size1'),
+                  Divider(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${widget.product_name}',
+                        style: kheading4,
+                      ),
+                      Text('${widget.product_description}'),
+                      RatingsTray(rating: widget.product_rating ?? 1),
+                      Text(
+                        '\$${widget.product_price}',
+                        style: ktext4,
+                      ),
+                      Text(
+                        'Product Details',
+                        style: ktext6,
+                      ),
+                      SizedBox(
+                        child: Text(
+                          '${widget.product_details}',
+                          style: ktext7,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
               spacing: 10,
               children: [
                 HardButton3(

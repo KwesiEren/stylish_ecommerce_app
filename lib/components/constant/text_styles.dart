@@ -1,7 +1,6 @@
-// Text Style controlers for the project
-
 import 'package:flutter/material.dart';
 import 'package:stylish_ecommerce_app/components/constant/colour_scheme.dart';
+// Text Style controlers for the project
 
 const kheading1 = TextStyle(
     fontSize: 30,
@@ -28,9 +27,9 @@ const kheading2 = TextStyle(
     color: text_color1);
 
 const kheading4 = TextStyle(
-    fontSize: 17,
+    fontSize: 18,
     fontFamily: 'Monserrat',
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w800,
     color: text_color1);
 
 const kheading3 = TextStyle(
@@ -86,3 +85,15 @@ const ktext5 = TextStyle(
     fontFamily: 'Overpass',
     fontWeight: FontWeight.w100,
     color: text_color4);
+
+const ktext6 = TextStyle(
+    fontSize: 15,
+    fontFamily: 'Monserrat',
+    fontWeight: FontWeight.w600,
+    color: text_color1);
+
+const ktext7 = TextStyle(
+    fontSize: 15,
+    fontFamily: 'Overpass',
+    fontWeight: FontWeight.w200,
+    color: text_color5);

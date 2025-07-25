@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'provider/product_provider.dart';
 import 'services/data/product_dao.dart';
-import 'package:stylish_ecommerce_app/screens/main_activity/home.dart';
+import 'package:stylish_ecommerce_app/screens/skeleton.dart';
 import 'package:stylish_ecommerce_app/services/data/wishlist_dao.dart';
 import 'package:stylish_ecommerce_app/provider/wishlist_provider.dart';
 import 'package:stylish_ecommerce_app/provider/category_provider.dart';
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: MainScreen(),
     );
   }
 }

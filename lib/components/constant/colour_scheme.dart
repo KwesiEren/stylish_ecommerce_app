@@ -1,5 +1,5 @@
-// Application theme controller
 import 'package:flutter/material.dart';
+// Application theme controller
 
 // Components and Background colors
 const base_color = Color.fromRGBO(255, 255, 255, 1);
@@ -17,3 +17,4 @@ const text_color1 = Color.fromRGBO(0, 0, 0, 1);
 const text_color2 = Color.fromRGBO(158, 158, 158, 1);
 const text_color3 = Color.fromRGBO(248, 55, 88, 1);
 const text_color4 = Color.fromRGBO(255, 255, 255, 1);
+const text_color5 = Color.fromRGBO(78, 78, 78, 1);
