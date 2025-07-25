@@ -4,6 +4,7 @@ import '../../models/product_model.dart';
 import '../../components/widgets/card1.dart';
 import '../../provider/product_provider.dart';
 import '../../provider/category_provider.dart';
+import 'package:stylish_ecommerce_app/provider/wishlist_provider.dart';
 import 'package:stylish_ecommerce_app/components/constant/text_styles.dart';
 import '../../components/widgets/featured_product_widget/featured_section.dart';
 import 'package:stylish_ecommerce_app/components/widgets/appbar_widget/appbar_widget.dart';
@@ -24,12 +25,12 @@ class _WishListScreenState extends State<WishListScreen> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      Provider.of<ProductProvider>(context, listen: false).fetchProducts();
+      Provider.of<WishlistProvider>(context, listen: false).loadWishlist();
     });
   }
 
   Future<void> _loadall() async {
-    await Provider.of<ProductProvider>(context, listen: false).fetchProducts();
+    await Provider.of<WishlistProvider>(context, listen: false).loadWishlist();
   }
 
   void _nextPage(Widget target) {
@@ -41,8 +42,8 @@ class _WishListScreenState extends State<WishListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final productProvider = Provider.of<ProductProvider>(context);
-    final List<ProductModel> products = productProvider.products;
+    final productProvider = Provider.of<WishlistProvider>(context);
+    final List<ProductModel> products = productProvider.items;
     final int? numbers = products.length;
     final bool isLoading = productProvider.isLoading;
 
@@ -108,6 +109,7 @@ class _WishListScreenState extends State<WishListScreen> {
                               itemBuilder: (context, index) {
                                 final product = products[index];
                                 return ProductCard(
+                                  productid: product.product_id,
                                   imageUrl: product.imageUrl,
                                   productName: product.product_name,
                                   productDetails: product.product_details ?? '',

@@ -124,6 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 product_rating: product.product_rating,
                               )),
                               child: ProductCard(
+                                productid: product.product_id,
                                 imageUrl: product.imageUrl,
                                 productName: product.product_name,
                                 productDetails: product.product_details ?? '',

@@ -1,9 +1,12 @@
 import 'ratings_tray.dart';
 import '../constant/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../constant/colour_scheme.dart';
+import '../../provider/wishlist_provider.dart';
 
 class ProductCard extends StatelessWidget {
+  final String productid;
   final String productName;
   final String productDetails;
   final double price;
@@ -12,6 +15,7 @@ class ProductCard extends StatelessWidget {
 
   const ProductCard({
     super.key,
+    required this.productid,
     required this.productName,
     required this.productDetails,
     required this.price,
@@ -21,6 +25,8 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final wishlistProvider = Provider.of<WishlistProvider>(context);
+    final isInWishList = wishlistProvider.isInWishList(productid);
     return Column(
       children: [
         Container(
@@ -41,22 +47,41 @@ class ProductCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // Product Image
-              Container(
-                width: 190,
-                height: 118,
-                decoration: BoxDecoration(
-                  color: card_color2,
-                  borderRadius: BorderRadius.circular(10),
-                  image: imageUrl.isNotEmpty
-                      ? DecorationImage(
-                          image: NetworkImage(imageUrl),
-                          fit: BoxFit.cover,
-                        )
-                      : null,
-                ),
-                child: imageUrl.isEmpty
-                    ? const Icon(Icons.image, size: 40, color: Colors.grey)
-                    : null,
+              Stack(
+                children: [
+                  Container(
+                    width: 190,
+                    height: 118,
+                    decoration: BoxDecoration(
+                      color: card_color2,
+                      borderRadius: BorderRadius.circular(10),
+                      image: imageUrl.isNotEmpty
+                          ? DecorationImage(
+                              image: NetworkImage(imageUrl),
+                              fit: BoxFit.cover,
+                            )
+                          : null,
+                    ),
+                    child: imageUrl.isEmpty
+                        ? const Icon(Icons.image, size: 40, color: Colors.grey)
+                        : null,
+                  ),
+                  Positioned(
+                      child: IconButton(
+                          onPressed: () {
+                            if (isInWishList) {
+                              wishlistProvider.remove(productid);
+                            } else {
+                              wishlistProvider.add(productid);
+                            }
+                          },
+                          icon: Icon(
+                            isInWishList
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: isInWishList ? buton_color2 : text_color2,
+                          )))
+                ],
               ),
 
               // Product Info
